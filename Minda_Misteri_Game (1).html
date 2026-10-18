@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minda Misteri — Cabaran Cara Anda Berfikir</title>
+<style>
+:root{--bg:#080b2b;--panel:#111747;--pink:#ff35c8;--blue:#18c8ff;--yellow:#ffe34d;--green:#24e0b2;--white:#f7f8ff}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--white);background:radial-gradient(circle at 15% 10%,#26206c 0,transparent 28%),radial-gradient(circle at 85% 20%,#38115e 0,transparent 25%),var(--bg);min-height:100vh;padding:20px}
+.wrap{max-width:900px;margin:auto}
+header{text-align:center;padding:24px 12px 18px}
+.kicker{display:inline-block;padding:7px 13px;border:1px solid var(--blue);border-radius:30px;color:var(--blue);font-weight:bold;letter-spacing:2px;font-size:.78rem}
+h1{font-size:clamp(2.3rem,8vw,5rem);line-height:.95;margin:16px 0 12px;text-transform:uppercase;letter-spacing:1px;color:var(--yellow);text-shadow:3px 4px 0 #e52bb5,0 0 24px #ff35c8}
+.subtitle{font-weight:bold;font-size:clamp(1rem,3vw,1.35rem)}
+.tagline{color:#d9dcff;margin-top:10px}
+.panel{background:linear-gradient(145deg,rgba(23,31,86,.97),rgba(12,15,52,.98));border:1px solid #525be0;border-radius:22px;padding:clamp(18px,4vw,30px);box-shadow:0 0 24px #171d6c;margin:16px 0}
+h2{margin-top:0;color:var(--blue)}
+label{display:block;font-weight:bold;margin:14px 0 7px}
+input{width:100%;padding:14px;border-radius:12px;border:2px solid #606bd7;background:#080d36;color:white;font-size:1rem}
+button{font-size:1rem;font-weight:bold;cursor:pointer;border:0;border-radius:14px;padding:13px 18px;transition:transform .15s,filter .15s}
+button:hover{transform:translateY(-2px);filter:brightness(1.1)}
+.primary{width:100%;margin-top:22px;background:linear-gradient(90deg,#ff25b9,#a629ff);color:white;box-shadow:0 0 18px #f327ca}
+.hidden{display:none!important}
+.progress-row{display:flex;justify-content:space-between;gap:10px;color:#cfd3ff;font-size:.9rem;margin-bottom:12px}
+.track{height:10px;border-radius:20px;background:#272d66;overflow:hidden;margin-bottom:22px}
+.bar{height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--pink));transition:width .3s}
+.question{font-size:clamp(1.2rem,4vw,1.65rem);font-weight:bold;line-height:1.35;margin:12px 0 22px}
+.answers{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.answer{background:#171e57;color:white;border:2px solid #5965c8;text-align:left;min-height:68px;display:flex;align-items:center;gap:12px}
+.answer .letter{flex:0 0 34px;height:34px;border-radius:10px;background:var(--blue);color:#081033;display:grid;place-items:center;font-weight:900}
+.answer:nth-child(2) .letter{background:var(--pink)}.answer:nth-child(3) .letter{background:var(--green)}.answer:nth-child(4) .letter{background:var(--yellow)}
+.answer.selected{border-color:var(--yellow);box-shadow:0 0 15px #ffe34d}
+.controls{display:flex;gap:10px;margin-top:20px}.controls button{flex:1}
+.secondary{background:#252c70;color:white;border:1px solid #6570df}
+.result-head{text-align:center}
+.result-icon{font-size:4rem}
+.profile{font-size:clamp(1.6rem,5vw,2.5rem);font-weight:900;color:var(--yellow);margin:8px 0}
+.result-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:20px}
+.result-card{border-radius:15px;padding:16px;background:#171e57;border:1px solid #5965c8}
+.result-card h3{margin:0 0 8px;color:var(--blue)}
+.result-card p{margin:0;line-height:1.5}
+.scoreline{color:#dce0ff}
+footer{text-align:center;padding:20px 10px 8px;color:#c6c9f6;font-size:.9rem;line-height:1.6}
+.small{font-size:.8rem;color:#b8bde9}
+@media(max-width:560px){body{padding:12px}.answers,.result-grid{grid-template-columns:1fr}.controls{flex-direction:column}.panel{border-radius:17px}}
+@media print{body{background:white;color:#111} .panel{box-shadow:none;background:white;color:#111;border:1px solid #888}button{display:none}.result-card{background:white;color:#111;border:1px solid #aaa}.small,footer{color:#333}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="kicker">SMK MERSING • UNIT BIMBINGAN DAN KAUNSELING</div>
+  <h1>Minda Misteri</h1>
+  <div class="subtitle">CABARAN CARA ANDA BERFIKIR</div>
+  <p class="tagline">🧠 Kenali kecenderungan diri melalui 7 cabaran interaktif!</p>
+</header>
+
+<section id="intro" class="panel">
+  <h2>✨ Sedia untuk cabaran?</h2>
+  <p>Jawab setiap soalan berdasarkan diri anda. Tiada jawapan betul atau salah — pilih jawapan yang paling menggambarkan diri anda.</p>
+  <label for="studentName">Nama murid</label>
+  <input id="studentName" type="text" placeholder="Contoh: Aina Sofea" maxlength="70" autocomplete="name">
+  <label for="studentClass">Kelas</label>
+  <input id="studentClass" type="text" placeholder="Contoh: 3 Ibnu Sina" maxlength="40">
+  <button class="primary" id="startBtn">▶ MULA CABARAN</button>
+  <p class="small">Permainan ini ialah aktiviti refleksi kendiri, bukan ujian psikometrik rasmi.</p>
+</section>
+
+<section id="quiz" class="panel hidden" aria-live="polite">
+  <div class="progress-row"><span id="counter">SOALAN 1 DARIPADA 7</span><span id="percent">14%</span></div>
+  <div class="track"><div class="bar" id="progress"></div></div>
+  <div class="question" id="questionText"></div>
+  <div class="answers" id="answers"></div>
+  <div class="controls">
+    <button class="secondary" id="backBtn">← KEMBALI</button>
+    <button class="primary" id="nextBtn" disabled>SETERUSNYA →</button>
+  </div>
+</section>
+
+<section id="result" class="panel hidden">
+  <div class="result-head">
+    <div class="result-icon" id="resultIcon">🧠</div>
+    <p class="scoreline" id="studentLine"></p>
+    <h2>PROFIL CARA BERFIKIR ANDA</h2>
+    <div class="profile" id="profileName"></div>
+    <p id="profileSummary"></p>
+  </div>
+  <div class="result-grid">
+    <div class="result-card"><h3>💪 Kekuatan utama</h3><p id="strengths"></p></div>
+    <div class="result-card"><h3>🌱 Ruang berkembang</h3><p id="growth"></p></div>
+    <div class="result-card"><h3>🚀 Aktiviti yang mungkin sesuai</h3><p id="activities"></p></div>
+    <div class="result-card"><h3>💡 Pesanan untuk anda</h3><p id="message"></p></div>
+  </div>
+  <p class="small" style="margin-top:18px">Keputusan ini menunjukkan kecenderungan berdasarkan jawapan anda sahaja. Setiap orang boleh mempunyai gabungan pelbagai cara berfikir; keputusan ini tidak menentukan kecerdasan atau kerjaya masa depan anda.</p>
+  <div class="controls">
+    <button class="secondary" id="printBtn">🖨 CETAK KEPUTUSAN</button>
+    <button class="primary" id="restartBtn">↻ CUBA LAGI</button>
+  </div>
+</section>
+<footer><strong>UNIT BIMBINGAN DAN KAUNSELING SMK MERSING</strong><br>Kenali kekuatan diri, terokai potensi dan terus berkembang!<br><span class="small">Maklumat nama dan kelas digunakan untuk memaparkan keputusan pada halaman ini sahaja.</span></footer>
+</div>
+<script>
+const categories = {
+  analytical:{name:"PEMIKIR ANALITIS",icon:"🔎",summary:"Anda cenderung memahami sesuatu melalui fakta, logik dan penyelesaian masalah.",strengths:"Berfikir secara logik • Teliti terhadap maklumat • Suka mencari punca masalah",growth:"Cuba pertimbangkan perasaan orang lain dan berikan ruang kepada idea spontan.",activities:"Eksperimen sains, teka-teki logik, analisis data dan aktiviti penyelesaian masalah.",message:"Fikir dengan teliti, kemudian berani mencuba."},
+  creative:{name:"PENCETUS KREATIF",icon:"🎨",summary:"Anda cenderung meneroka idea baharu, imaginasi dan pelbagai kemungkinan.",strengths:"Banyak idea • Fleksibel • Suka mencipta dan mencuba pendekatan baharu",growth:"Bina rutin kecil dan pecahkan idea besar kepada langkah yang boleh dilakukan.",activities:"Seni, reka bentuk, penulisan, inovasi, video kreatif dan projek penciptaan.",message:"Lepaskan imaginasi, cipta kemungkinan!"}, 
+  collaborative:{name:"PEMIKIR KOLABORATIF",icon:"🤝",summary:"Anda cenderung belajar dan menyelesaikan cabaran melalui hubungan serta kerjasama.",strengths:"Mendengar pandangan • Bekerjasama • Peka terhadap keperluan orang lain",growth:"Latih keyakinan membuat keputusan sendiri dan menyuarakan pendapat dengan jelas.",activities:"Projek berkumpulan, pembentangan, khidmat komuniti, mentor rakan dan aktiviti kepimpinan.",message:"Bersama kita lebih kuat."},
+  strategic:{name:"PERANCANG STRATEGIK",icon:"🗺️",summary:"Anda cenderung menyusun langkah, menetapkan matlamat dan melihat gambaran keseluruhan.",strengths:"Teratur • Berorientasikan matlamat • Suka menyediakan pelan tindakan",growth:"Bersedia menyesuaikan rancangan apabila keadaan berubah dan elakkan terlalu mengejar kesempurnaan.",activities:"Mengurus projek, merancang acara, permainan strategi dan menyusun jadual.",message:"Rancang hari ini, capai impian esok."}
+};
+const questions = [
+ {q:"Apabila diberikan tugasan baharu, apakah perkara pertama yang anda lakukan?",a:[["analytical","Mencari fakta dan memahami masalah"],["creative","Mencari idea yang unik"],["collaborative","Berbincang dengan rakan"],["strategic","Menyusun langkah untuk menyiapkannya"]]},
+ {q:"Apabila menghadapi masalah yang sukar, anda biasanya…",a:[["analytical","Memecahkan masalah kepada bahagian kecil"],["creative","Mencuba cara yang belum pernah dicuba"],["collaborative","Meminta pandangan orang yang dipercayai"],["strategic","Membuat pelan penyelesaian"]]},
+ {q:"Aktiviti manakah paling menarik perhatian anda?",a:[["analytical","Eksperimen, nombor atau teka-teki"],["creative","Melukis, mereka cipta atau menulis"],["collaborative","Aktiviti kumpulan dan membantu orang"],["strategic","Permainan strategi atau mengurus projek"]]},
+ {q:"Dalam tugasan berkumpulan, peranan yang sering anda pilih ialah…",a:[["analytical","Menyemak fakta dan mencari jawapan"],["creative","Mencadangkan idea yang menarik"],["collaborative","Memastikan semua ahli terlibat"],["strategic","Membahagikan tugas dan memantau masa"]]},
+ {q:"Apabila perlu membuat keputusan penting, anda lebih suka…",a:[["analytical","Membandingkan bukti dan maklumat"],["creative","Memikirkan beberapa pilihan baharu"],["collaborative","Mendengar pandangan orang lain"],["strategic","Menilai pilihan dan kesannya pada masa depan"]]},
+ {q:"Apabila mempunyai masa lapang, anda lebih cenderung…",a:[["analytical","Meneroka fakta atau mencabar minda"],["creative","Mencipta sesuatu atau mencuba hobi baharu"],["collaborative","Berbual atau melakukan aktiviti bersama rakan"],["strategic","Merancang projek atau menetapkan sasaran"]]},
+ {q:"Pernyataan manakah paling menggambarkan diri anda?",a:[["analytical","Saya suka memahami bagaimana sesuatu berfungsi"],["creative","Saya suka membayangkan apa yang boleh dicipta"],["collaborative","Saya suka apabila orang dapat bekerjasama"],["strategic","Saya suka menetapkan matlamat dan mencapainya"]]}
+];
+let current=0, selected=Array(questions.length).fill(null), studentName="",studentClass="";
+const $=id=>document.getElementById(id);
+$("startBtn").addEventListener("click",()=>{
+ studentName=$("studentName").value.trim();studentClass=$("studentClass").value.trim();
+ if(!studentName||!studentClass){alert("Sila isi nama dan kelas sebelum bermula.");return;}
+ current=0;selected=Array(questions.length).fill(null);
+ $("intro").classList.add("hidden");$("result").classList.add("hidden");$("quiz").classList.remove("hidden");renderQuestion();
+});
+function renderQuestion(){
+ const item=questions[current];$("counter").textContent=`SOALAN ${current+1} DARIPADA ${questions.length}`;
+ $("percent").textContent=`${Math.round((current+1)/questions.length*100)}%`;$("progress").style.width=`${(current+1)/questions.length*100}%`;
+ $("questionText").textContent=item.q;$("answers").innerHTML="";
+ item.a.forEach((ans,i)=>{const b=document.createElement("button");b.className="answer"+(selected[current]===ans[0]?" selected":"");b.innerHTML=`<span class="letter">${String.fromCharCode(65+i)}</span><span>${ans[1]}</span>`;b.addEventListener("click",()=>{selected[current]=ans[0];renderQuestion()});$("answers").appendChild(b)});
+ $("backBtn").disabled=current===0;$("backBtn").style.opacity=current===0?".45":"1";
+ $("nextBtn").disabled=!selected[current];$("nextBtn").textContent=current===questions.length-1?"LIHAT KEPUTUSAN ✨":"SETERUSNYA →";
+}
+$("nextBtn").addEventListener("click",()=>{if(!selected[current])return;if(current<questions.length-1){current++;renderQuestion()}else showResult()});
+$("backBtn").addEventListener("click",()=>{if(current>0){current--;renderQuestion()}});
+function showResult(){
+ const counts={analytical:0,creative:0,collaborative:0,strategic:0};selected.forEach(k=>counts[k]++);
+ const max=Math.max(...Object.values(counts));const winners=Object.keys(counts).filter(k=>counts[k]===max);
+ const key=winners.sort((a,b)=>["analytical","creative","collaborative","strategic"].indexOf(a)-["analytical","creative","collaborative","strategic"].indexOf(b))[0];
+ const p=categories[key];$("quiz").classList.add("hidden");$("result").classList.remove("hidden");
+ $("resultIcon").textContent=p.icon;$("studentLine").textContent=`${studentName} • Kelas ${studentClass}`;
+ $("profileName").textContent=p.name;$("profileSummary").textContent=p.summary;
+ $("strengths").textContent=p.strengths;$("growth").textContent=p.growth;$("activities").textContent=p.activities;$("message").textContent=p.message;
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+$("restartBtn").addEventListener("click",()=>{$("result").classList.add("hidden");$("intro").classList.remove("hidden");$("studentName").value=studentName;$("studentClass").value=studentClass;window.scrollTo({top:0,behavior:"smooth"})});
+$("printBtn").addEventListener("click",()=>window.print());
+</script>
+</body>
+</html>
